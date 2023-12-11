@@ -17,19 +17,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Topbar Search -->
-                <form
-                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Поиск..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -123,48 +111,42 @@
                             </div>
                         @endif
                     </div>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">№</th>
-                            <th scope="col">Сокращенная ссылка</th>
-                            <th scope="col">Источник</th>
-                            <th scope="col">Переходы</th>
-                            <th scope="col">Действия</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @forelse($links as $link)
-                            <tr data-entry-id="{{ $link->id }}">
-
-                                <td>{{ $loop->iteration }}</td>
-                                <td><a href="{{route('generate-link',$link->generated)}}" target="_blank">{{route('generate-link',$link->generated)}}</a></td>
-                                <td>{{ $link->link }}</td>
-                                <td>{{$link->count}}</td>
-                                <td class="action-block">
-                                    <div class="mrt-5">
-                                        <a class="btn btn-primary btn-actions" href="{{ route('generate-links.edit', $link->id) }}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <form action="{{ route('generate-links.destroy',$link->id) }}" method="POST">
-
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-actions"><i class="fas fa-times"></i></button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="7" class="text-center">{{ __('Нет сокращенных ссылок') }}</td>
-                            </tr>
-                        @endforelse
-                        </tbody>
-                    </table>
                 </div>
+                <div class="row mt-2 table_row">
+                        @forelse($links as $link)
+                            <div class="col-lg-4 bg-white m-2 p-3">
+
+                                <div class="header-record-block">
+                                    <div class="id_record">№ записи:  {{ $loop->iteration }}</div>
+                                    <div class="action-block">
+                                        <div class="mrt-5">
+                                            <a class="btn btn-primary btn-actions" href="{{ route('generate-links.edit', $link->id) }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <form action="{{ route('generate-links.destroy',$link->id) }}" method="POST">
+
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-actions"><i class="fas fa-times"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2"><b>Сокращенная ссылка:</b> <a href="{{route('generate-link',$link->generated)}}" target="_blank">{{route('generate-link',$link->generated)}}</a></div>
+                                <div class="mt-2"><b>Источник:</b> {{ $link->link }}</div>
+                                <div class="mt-2"><b>Переходы:</b> <span class="count-views p-1">{{$link->count}}</span></div>
+
+                            </div>
+                        @empty
+                            <div>
+                                <div class="text-center">{{ __('Нет сокращенных ссылок') }}</div>
+                            </div>
+                        @endforelse
+
+
+            </div>
 
             </div>
             <!-- /.container-fluid -->

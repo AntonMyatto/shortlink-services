@@ -76,10 +76,8 @@
         </li>
 
     @elseif($user->hasRole('mngr'))
-
-    @elseif($user->hasRole('cnt'))
         <div class="sidebar-heading">
-            Контент
+            Функционал
         </div>
 
 
@@ -96,35 +94,59 @@
                     <h6 class="collapse-header">Действия:</h6>
                     <a class="collapse-item" href="{{ route('generate-links.index') }}">Сокращение ссылок</a>
                 </div>
-            </div>
-        </li>
-    @elseif($user->hasRole('sc'))
-        <div class="sidebar-heading">
-            Контент
-        </div>
+                </di
+                @elseif($user->hasRole('cnt'))
+                    <div class="sidebar-heading">
+                        Функционал
+                    </div>
 
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Приложение</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Действия:</h6>
-                    <a class="collapse-item" href="{{ route('generate-links.index') }}">Сокращение ссылок</a>
-                </div>
-            </div>
-        </li>
-    @endif
+                    <!-- Divider -->
+                    <hr class="sidebar-divider d-none d-md-block">
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                           aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fas fa-fw fa-folder"></i>
+                            <span>Приложение</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                             data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Действия:</h6>
+                                <a class="collapse-item" href="{{ route('generate-links.index') }}">Сокращение
+                                    ссылок</a>
+                            </div>
+                            </di
+                            @elseif($user->hasRole('sc'))
+                                <div class="sidebar-heading">
+                                    Контент
+                                </div>
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+
+                                <!-- Divider -->
+                                <hr class="sidebar-divider d-none d-md-block">
+                                <li class="nav-item">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                                       data-target="#collapseTwo"
+                                       aria-expanded="true" aria-controls="collapseTwo">
+                                        <i class="fas fa-fw fa-folder"></i>
+                                        <span>Приложение</span>
+                                    </a>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                         data-parent="#accordionSidebar">
+                                        <div class="bg-white py-2 collapse-inner rounded">
+                                            <h6 class="collapse-header">Действия:</h6>
+                                            <a class="collapse-item" href="{{ route('generate-links.index') }}">Сокращение
+                                                ссылок</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
+
+                            <!-- Sidebar Toggler (Sidebar) -->
+                            <div class="text-center d-none d-md-inline">
+                                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                            </div>
 
 
 </ul>
